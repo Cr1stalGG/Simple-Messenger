@@ -17,8 +17,14 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne
+    private Account fromAccount;
+    @OneToOne
     private Account toAccount;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Message> messages;
+
+    public void addMessage(Message message){
+        this.messages.add(message);
+    }
 
 }

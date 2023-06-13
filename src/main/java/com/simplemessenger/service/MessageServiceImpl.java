@@ -26,7 +26,7 @@ public class MessageServiceImpl implements MessageService {
     public void sendMessage(long chatId, SendMessageDTO messageDTO) {
         Chat chat = chatRepository.findById(chatId);
 
-        chat.getMessages().add(messageDTOConvertor.convertSendMessageDTOToEntity(messageDTO));
+        chat.addMessage(messageDTOConvertor.convertSendMessageDTOToEntity(messageDTO));
 
         chatRepository.save(chat);
     }
